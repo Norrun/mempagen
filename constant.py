@@ -2,10 +2,12 @@ from functools import reduce
 from trie import Trie
 
 vowels = ["a", "e", "i", "o", "u"]
+vowel_combos = ["ai", "au", "ea", "ee", "ei", "eu", "ie", "oa", "oe", "oi", "oo", "ou", "ow", "oy", "ue", "ui"]
 consonants = [
     "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
     "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z",
 ]
+double_consonants = ["b","d","f","g","l","m","n","p","r","s","t","z"]
 
 consonants_combo_begin = reduce(lambda x, y:x.add(y),[
 "bl","br","cl","cr","dr","dw","fl","fr","gl","gr","gw","pl","pr","qu","sl","sm","sn","sp","st","str","sw","shr","squ","spr","scr","spl",
