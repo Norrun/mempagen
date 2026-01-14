@@ -6,6 +6,7 @@ def generate(length):
     word = ""
     seq = [secrets.randbelow(2)]
     trie_depth = 0
+    current_trie = {}
     print(seq[0])
     while length > 0:
 
@@ -19,7 +20,11 @@ def generate(length):
             seq.append(1)
         else:
             random = secrets.randbelow(3)
-            if len(seq) < 2 or seq[-2] == 0 or length < 2:
+            if  length >= 2 and random == 1 :
+                word += secrets.choice(data.double_consonants)
+                length -= 2
+            elif 
+
             
 
 
