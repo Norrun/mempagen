@@ -1,3 +1,4 @@
+from functools import cache
 class Trie:
     def __init__(self):
         self.root = {}
@@ -10,6 +11,7 @@ class Trie:
                 current[c] = {}
             current = current[c]
         current[self.end_symbol] = True
+        return self
 
     def exists(self, word):
         current = self.root
@@ -27,6 +29,12 @@ class Trie:
                 return []
             current = current[c]
         return self.search_level(current,prefix,matches)
+    @cache
+    def letters_of_max_lenghth_word(self,seq,length):
+        letters = []
+        current = self.root
+        depth = 0
+        # something something depth first search
 
 
-    
+        

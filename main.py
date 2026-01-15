@@ -11,7 +11,7 @@ def generate(length):
     while length > 0:
 
         if seq[-1] == 0:
-            if (len(seq) < 2 or seq[-2] == 0 or length < 2) and secrets.randbelow(2) == 1:
+            if (len(seq) < 2 or seq[-2] == 1 or length < 2) and secrets.randbelow(2) == 1:
                 word += secrets.choice(data.vowels)
                 length -= 1
             else:
@@ -21,9 +21,14 @@ def generate(length):
         else:
             random = secrets.randbelow(3)
             if  length >= 2 and random == 1 :
-                word += secrets.choice(data.double_consonants)
+                choice = secrets.choice(data.double_consonants)
+                word += choice + choice
                 length -= 2
-            elif 
+                seq.append(0)
+        print(word)
+
+    return word
+
 
             
 
