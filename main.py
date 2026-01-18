@@ -20,6 +20,9 @@ def generate(length):
             seq.append(1)
         else:
             random = secrets.randbelow(3)
+            match(random):
+                case 1:
+                    # something, something trie
             if  length >= 2 and random == 1 :
                 choice = secrets.choice(data.double_consonants)
                 word += choice + choice

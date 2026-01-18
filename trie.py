@@ -35,6 +35,11 @@ class Trie:
         current = self.root
         depth = 0
         # something something depth first search
+    
+    def letters_of_min_length_word(self,seq,length):
+        letters = []
+        current = self.root
+        depth = 0
 
 
         
