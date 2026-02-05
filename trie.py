@@ -1,4 +1,4 @@
-from functools import cache
+from functools import cache # keeping this just in case.
 class Trie:
     def __init__(self):
         self.root = {}
