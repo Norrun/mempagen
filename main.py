@@ -4,13 +4,17 @@ import data
 
 def generate(length):
     word = ""
-    seq = [secrets.randbelow(2)]
-    trie_depth = 0
-    current_trie = {}
-    print(seq[0])
+    check = secrets.randbelow(2)
+    stage = 0
     while length > 0:
-        pass
-        
+        if check == 0:
+            word += secrets.choice(data.vowels)
+            check = 1
+        else:
+            word += secrets.choice(data.consonants)
+            check = 0
+        length -= 1
+
 
     return word
 
