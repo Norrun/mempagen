@@ -6,7 +6,7 @@ consonants = [
     "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
     "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z",
 ]
-double_consonants = ["b","d","f","g","l","m","n","p","r","s","t","z"]
+double_consonants = []
 
 consonants_combo_begin2 = [
 "bl","br","cl","cr","dr","dw","fl","fr","gl","gr","gw","pl","pr","qu","sl","sm","sn","sp","st","sw",
@@ -14,7 +14,8 @@ consonants_combo_begin2 = [
 ]
 consonants_combo_begin3 = ["str","shr","squ","spr","scr","spl","thr",] 
 consonants_combo_mid2 = [#  \/ Temporarly ignoring c and k (for the most part, mainly "sk")
-"bl","br","cl","cr","fl","fr","gl","gr","nt","pl","pr","sp","st",
+"bl","br","cl","cr","fl","fr","gl","gr","nt","pl","pr","sp","st",  
+"bb","dd","ff","gg","ll","mm","nn","pp","rr","ss","tt","zz"
 ] # Should double consonants be handled here or by a separate, but connected system? double consonants can end with a cluster.
 consonants_combo_mid3 = ["str","scr","spl","thr",] 
 consonants_combo_end2 = [# thinking about handeling "lv" "lg" "ls" "ng" ngl "n?" "nkl" "ps" "rs", by adding an e at the end in the Trie
