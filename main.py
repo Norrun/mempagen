@@ -33,10 +33,10 @@ def get_vowel_component(completed, length):
             
 def get_consonant_component(completed, length):
     
-    if completed > 0: #middle
-        return get_consonant(completed, length, data.consonants_combo_mid2, data.consonants_combo_mid3)
-    elif length - completed <= 3: #end
+    if length - completed <= 3: #end
         return get_consonant(completed, length, data.consonants_combo_end2, data.consonants_combo_end3)
+    elif completed > 0: #middle
+        return get_consonant(completed, length, data.consonants_combo_mid2, data.consonants_combo_mid3)
     else: # beginning
         return get_consonant(completed, length, data.consonants_combo_begin2, data.consonants_combo_begin3)
 
