@@ -1,65 +1,60 @@
 import secrets
 import data
+import sys
 
 
 def generate(length):
     word = ""
     check = secrets.randbelow(2)
     completed = 0
-    stage = 0
+   
     while length - completed > 0:
-        if completed > 0:
-            stage = 1
-        elif length - completed <= 3:
-            stage = 2
+       
         
         if check == 0: # vowel
-            if completed > 0 and secrets.randbelow(2) == 1 and length - completed > 3:
-                word += secrets.choice(data.vowel_combos)
-                completed += 2
-            else:
-                word += secrets.choice(data.vowels)
-                check = 1
-                completed += 1
+            addition, count = get_vowel_component(completed,length)
+            word += addition
+            completed += count
             check = 1
         else: # consonants
-            random = secrets.randbelow(3)
-            if completed == 0: # beginning
-                if random == 1:
-                    word += secrets.choice(data.consonants_combo_begin2)
-                    completed += 2
-                elif random == 2:
-                    word += secrets.choice(data.consonants_combo_begin3)
-                    completed += 3
-            elif completed > 0 and length - completed > 3: # middle
-                if random == 1:
-                    word += secrets.choice(data.consonants_combo_mid2)
-                    completed += 2
-                elif random == 2:
-                    word += secrets.choice(data.consonants_combo_mid3)
-                    completed += 3
-            elif length - completed <= 3: # end
-                if random == 1 or length - completed == 2:
-                    word += secrets.choice(data.consonants_combo_end2)
-                    completed += 2
-                elif random == 2 and length - completed == 3:
-                    word += secrets.choice(data.consonants_combo_end3)
-                    completed += 3
-            else: # default
-                word += secrets.choice(data.consonants)
-                completed += 1
+            addition, count = get_consonant_component(completed, length)
+            word += addition
+            completed += count
             check = 0
         #completed += 1
 
 
     return word
 
-
+def get_vowel_component(completed, length):
+    if completed > 0 and secrets.randbelow(2) == 1 and length - completed > 3:
+        return secrets.choice(data.vowel_combos), 2
+    return secrets.choice(data.vowels), 1
             
+def get_consonant_component(completed, length):
+    
+    if completed > 0: #middle
+        return get_consonant(completed, length, data.consonants_combo_mid2, data.consonants_combo_mid3)
+    elif length - completed <= 3: #end
+        return get_consonant(completed, length, data.consonants_combo_end2, data.consonants_combo_end3)
+    else: # beginning
+        return get_consonant(completed, length, data.consonants_combo_begin2, data.consonants_combo_begin3)
+
+def get_consonant(completed, length, combo2, combo3):
+    remaining = length - completed
+    rand = secrets.randbelow(min(remaining,3))
+    match rand:
+        case 0:
+            return secrets.choice(data.consonants), 1
+        case 1:
+            return secrets.choice(combo2),2
+        case 2:
+            return secrets.choice(combo3),3
+
 
 
 def main():
-    word = generate(10)
+    word = generate(int(sys.argv[1]))
     print(word)
 
 
